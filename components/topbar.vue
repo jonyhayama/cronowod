@@ -8,6 +8,10 @@ const items = [
     label: 'About',
     command: () => { navigateTo('/about') }
   },
+  {
+    label: 'Workouts',
+    command: () => { navigateTo('/workouts') }
+  }
   // TODO: Add Full Screen button
   // {
   //   label: 'Full Screen',

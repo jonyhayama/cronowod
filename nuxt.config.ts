@@ -34,7 +34,8 @@ export default defineNuxtConfig({
     "primeicons/primeicons.css",
   ],
   modules: [
-    '@primevue/nuxt-module'
+    '@primevue/nuxt-module',
+    '@vueuse/nuxt',
   ],
   primevue: {
     options: {

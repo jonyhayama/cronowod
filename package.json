@@ -17,6 +17,8 @@
     "vue": "latest"
   },
   "devDependencies": {
-    "@primevue/nuxt-module": "^4.0.0"
+    "@primevue/nuxt-module": "^4.0.0",
+    "@vueuse/core": "^10.11.0",
+    "@vueuse/nuxt": "^10.11.0"
   }
 }
