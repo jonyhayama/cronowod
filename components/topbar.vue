@@ -12,17 +12,12 @@ const items = [
     label: 'Workouts',
     command: () => { navigateTo('/workouts') }
   }
-  // TODO: Add Full Screen button
-  // {
-  //   label: 'Full Screen',
-  //   icon: 'pi pi-fw pi-window-maximize',
-  // }
 ];
-
+const { isFullscreen, enter, exit, toggle } = useFullscreen()
 </script>
 
 <template>
-  <Menubar :model="items" :pt="{
+  <Menubar v-show="!isFullscreen" :model="items" :pt="{
     root: {
       class: 'layout-topbar',
     }
@@ -30,7 +25,17 @@ const items = [
     <template #start>
       <span style="font-weight: bold" @click="navigateTo('/')">CronoWOD</span>
     </template>
+    <template #end>
+      <Button icon="pi pi-window-maximize" severity="secondary" @click="enter" />
+    </template>
   </Menubar>
+  <Button
+    v-show="isFullscreen"
+    icon="pi pi-window-minimize"
+    severity="secondary"
+    @click="exit"
+    style="position: absolute; right: 0.3em; top: 0.3em; z-index: 9"
+  />
 </template>
 
 <style scoped>
@@ -39,7 +44,15 @@ const items = [
   border-top: none;
   border-right: none;
   border-left: none;
-  justify-content: space-between;
   height: var(--topbar-height);
+}
+
+.layout-topbar :deep(.p-menubar-button),
+.layout-topbar :deep(.p-menubar-root-list) {
+  margin-left: auto;
+}
+
+.layout-topbar :deep(.p-menubar-end) {
+  margin-left: 0;
 }
 </style>

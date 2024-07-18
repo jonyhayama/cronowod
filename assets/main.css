@@ -28,3 +28,7 @@ body {
 .page-wrapper {
   padding: 0.5em 1em;
 }
+
+.layout-wrapper.is-fullscreen {
+  --topbar-height: 0px;
+}
