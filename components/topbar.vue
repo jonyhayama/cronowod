@@ -40,5 +40,6 @@ const items = [
   border-right: none;
   border-left: none;
   justify-content: space-between;
+  height: var(--topbar-height);
 }
 </style>
