@@ -24,8 +24,8 @@ const toggleWorkoutsVisibility = () => { isWorkoutsVisible.value = !isWorkoutsVi
       <Tabs v-else :value="workouts.items[0].id">
         <TabList style="position: sticky; top: 0; left: 0; right: 0;">
           <div style="position: absolute; top: 0.3em; right: 0.3em; z-index: 9; display: flex; gap: 0.5em;">
-            <Button @click="increaseFontSize" icon="pi pi-search-plus" />
-            <Button @click="decreaseFontSize" icon="pi pi-search-minus" />
+            <Button @click="increaseFontSize" icon="pi pi-search-plus" severity="secondary" />
+            <Button @click="decreaseFontSize" icon="pi pi-search-minus" severity="secondary" />
           </div>
           <Tab v-for="workout in workouts.items" :value="workout.id">{{ workout.name }}</Tab>
         </TabList>
@@ -42,6 +42,7 @@ const toggleWorkoutsVisibility = () => { isWorkoutsVisible.value = !isWorkoutsVi
       <Button
         @click="toggleWorkoutsVisibility" :icon="`pi pi-angle-${isWorkoutsVisible ? 'left': 'right'}`"
         style="position: absolute; left: 0.3em; top: 0.3em; z-index: 9;"
+        severity="secondary"
       />
       <timers />
     </SplitterPanel>
