@@ -19,7 +19,7 @@ const toggleWorkoutsVisibility = () => { isWorkoutsVisible.value = !isWorkoutsVi
     <SplitterPanel v-show="isWorkoutsVisible" style="overflow: auto; position: relative">
       <div v-if="workouts.items.length <= 0">
         <p>No workouts found</p>
-        <Button @click="navigateTo('/workout')" label="Create Workout" />
+        <Button @click="navigateTo('/workouts')" label="Create Workout" />
       </div>
       <Tabs v-else :value="workouts.items[0].id">
         <TabList style="position: sticky; top: 0; left: 0; right: 0;">
