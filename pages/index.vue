@@ -9,11 +9,14 @@ const workouts = useStorage('cronowod/workouts', {
 const fontSize = ref(3.5);
 const increaseFontSize = () => { fontSize.value += 0.5; };
 const decreaseFontSize = () => { fontSize.value -= 0.5; };
+
+const isWorkoutsVisible = ref(true);
+const toggleWorkoutsVisibility = () => { isWorkoutsVisible.value = !isWorkoutsVisible.value; };
 </script>
 
 <template>
   <Splitter style="height: calc(100vh - var(--topbar-height))">
-    <SplitterPanel style="overflow: auto; position: relative">
+    <SplitterPanel v-show="isWorkoutsVisible" style="overflow: auto; position: relative">
       <div v-if="workouts.items.length <= 0">
         <p>No workouts found</p>
         <Button @click="navigateTo('/workout')" label="Create Workout" />
@@ -35,7 +38,11 @@ const decreaseFontSize = () => { fontSize.value -= 0.5; };
         </TabPanels>
       </Tabs>
     </SplitterPanel>
-    <SplitterPanel>
+    <SplitterPanel style="position: relative">
+      <Button
+        @click="toggleWorkoutsVisibility" :icon="`pi pi-angle-${isWorkoutsVisible ? 'left': 'right'}`"
+        style="position: absolute; left: 0.3em; top: 0.3em; z-index: 9;"
+      />
       <timers />
     </SplitterPanel>
   </Splitter>
