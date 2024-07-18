@@ -35,7 +35,7 @@ const isPaused = computed(() => !isActive.value && (minutes.value !== 0 || secon
         <div style="font-weight: bold; font-size: 4em; line-height: 1em;">Get Ready!</div>
       </template>
       <template v-else>
-        <div style="font-weight: bold; font-size: 8em;">
+        <div style="font-weight: bold; font-size: 8em; font-variant-numeric: tabular-nums;">
           {{ formatNumber(minutes) }}:{{ formatNumber(seconds) }}
         </div>
         <div style="display: flex; gap: 0.5em; justify-content: center;">
