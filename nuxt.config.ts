@@ -22,6 +22,7 @@ const MyPreset = definePreset(Aura, {
 
 export default defineNuxtConfig({
   app: {
+    baseURL: '/cronowod/',
     head: {
       title: "CronoWOD",
     },
