@@ -28,7 +28,7 @@ const items = [
     }
   }">
     <template #start>
-      CronoWOD
+      <span style="font-weight: bold" @click="navigateTo('/')">CronoWOD</span>
     </template>
   </Menubar>
 </template>
