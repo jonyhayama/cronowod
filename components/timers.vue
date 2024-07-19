@@ -42,9 +42,9 @@ const isPaused = computed(() => !isActive.value && (minutes.value > 0 || seconds
           <template v-if="isActive">
             <Button @click="pause" icon="pi pi-pause" />
           </template>
-          <templte v-if="!isActive">
+          <template v-if="!isActive">
             <Button @click="resume" icon="pi pi-play" />
-          </templte>
+          </template>
           <template v-if="isPaused">
             <Button @click="reset" icon="pi pi-replay" />
           </template>
