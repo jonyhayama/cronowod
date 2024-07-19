@@ -6,7 +6,7 @@ const workouts = useStorage('cronowod/workouts', {
   items: []
 }, localStorage, { mergeDefaults: true });
 
-const selectedTab = ref(workouts.value.items[0].id)
+const selectedTab = ref(workouts.value.items[0]?.id)
 const fontSize = ref(workouts.value.items[0]?.fontSize || 3.5);
 const updateCurrentWorkoutFontSize = () => {
   const workout = workouts.value.items.find(w => w.id === selectedTab.value);
