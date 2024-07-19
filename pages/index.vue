@@ -6,9 +6,30 @@ const workouts = useStorage('cronowod/workouts', {
   items: []
 }, localStorage, { mergeDefaults: true });
 
-const fontSize = ref(3.5);
-const increaseFontSize = () => { fontSize.value += 0.5; };
-const decreaseFontSize = () => { fontSize.value -= 0.5; };
+const selectedTab = ref(workouts.value.items[0].id)
+const fontSize = ref(workouts.value.items[0]?.fontSize || 3.5);
+const updateCurrentWorkoutFontSize = () => {
+  const workout = workouts.value.items.find(w => w.id === selectedTab.value);
+  if (workout) {
+    workout.fontSize = fontSize.value;
+  }
+};
+
+const increaseFontSize = () => { 
+  fontSize.value += 0.5;
+  updateCurrentWorkoutFontSize();
+};
+const decreaseFontSize = () => { 
+  fontSize.value -= 0.5;
+  updateCurrentWorkoutFontSize();
+};
+
+watch(() => selectedTab.value, () => {
+  const workout = workouts.value.items.find(w => w.id === selectedTab.value);
+  if (workout) {
+    fontSize.value = workout.fontSize || 3.5;
+  }
+});
 
 const isWorkoutsVisible = ref(true);
 const toggleWorkoutsVisibility = () => { isWorkoutsVisible.value = !isWorkoutsVisible.value; };
@@ -21,7 +42,7 @@ const toggleWorkoutsVisibility = () => { isWorkoutsVisible.value = !isWorkoutsVi
         <p>No workouts found</p>
         <Button @click="navigateTo('/workouts')" label="Create Workout" />
       </div>
-      <Tabs v-else :value="workouts.items[0].id">
+      <Tabs v-else v-model:value="selectedTab">
         <TabList style="position: sticky; top: 0; left: 0; right: 0;">
           <div style="position: absolute; top: 0.3em; right: 0.3em; z-index: 9; display: flex; gap: 0.5em;">
             <Button @click="increaseFontSize" icon="pi pi-search-plus" severity="secondary" />
