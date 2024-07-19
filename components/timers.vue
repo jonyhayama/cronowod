@@ -24,7 +24,7 @@ const reset = () => {
   seconds.value = -3;
 };
 
-const isPaused = computed(() => !isActive.value && (minutes.value !== 0 || seconds.value !== 0));
+const isPaused = computed(() => !isActive.value && (minutes.value > 0 || seconds.value > 0));
 </script>
 
 <template>
