@@ -65,7 +65,7 @@ const toggleWorkoutsVisibility = () => { isWorkoutsVisible.value = !isWorkoutsVi
         style="position: absolute; left: 0.3em; top: 0.3em; z-index: 9;"
         severity="secondary"
       />
-      <timers />
+      <timers-list />
     </SplitterPanel>
   </Splitter>
 </template>
