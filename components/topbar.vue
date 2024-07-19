@@ -13,7 +13,7 @@ const items = [
     command: () => { navigateTo('/workouts') }
   }
 ];
-const { isFullscreen, enter, exit, toggle } = useFullscreen()
+const { isFullscreen, enter, exit, toggle, isSupported } = useFullscreen()
 </script>
 
 <template>
@@ -25,7 +25,7 @@ const { isFullscreen, enter, exit, toggle } = useFullscreen()
     <template #start>
       <span style="font-weight: bold" @click="navigateTo('/')">CronoWOD</span>
     </template>
-    <template #end>
+    <template #end v-if="isSupported">
       <Button icon="pi pi-window-maximize" severity="secondary" @click="enter" />
     </template>
   </Menubar>
